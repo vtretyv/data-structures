@@ -26,6 +26,13 @@ treeMethods.contains = function(target) {
   });
 };
 
+treeMethods.traverse = function(iter) {
+  iter(this.value);
+  this.children.forEach(function(child) {
+    child.traverse(iter);
+  });
+};
+
 
 
 /*

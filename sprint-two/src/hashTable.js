@@ -35,7 +35,7 @@ HashTable.prototype.insert = function(k, v) {
 HashTable.prototype.remove = function(k) {
   
   this._count--;
-  if (this._count / this._limit < 0.25 && this._count > 8) {
+  if (this._count / this._limit < 0.25 && this._limit > 8) {
     this.resize(this._limit / 2);
   }
   
@@ -87,7 +87,6 @@ HashTable.prototype.resize = function(size) {
       var curNode = bucket.head;
       while (curNode !== null) {
         thisTable._count--;
-        console.log(curNode);
         thisTable.insert(curNode.value.key, curNode.value.value);
         curNode = curNode.next;
       }
